@@ -168,6 +168,8 @@ gapminder_co2_americas <- gapminder_co2 %>%
 gapminder_co2_2007 <- gapminder_co2 %>%
   filter(continent == "Americas" & year == 2007)
 
+write_csv(gapminder_co2_2007, "data/gapminder_co2_2007.csv")
+
 # Messing around
 
 library(dplyr)
