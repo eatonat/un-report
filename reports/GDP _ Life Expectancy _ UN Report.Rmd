@@ -1,0 +1,35 @@
+---
+title: "Report on the Relationship between GDP and Life Expectancy (United Nations)"
+author: "Arieanna Eaton"
+date: "2024-04-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages}
+library(tidyverse)
+```
+Report prepared for the Software Carpentries Workshop. 
+
+```{r}
+gapminder_1997 <- read_csv("data/gapminder_1997.csv")
+```
+```{r gdp_lifeexp_1997 plot}
+ggplot(data = gapminder_1997) + 
+  aes(x = gdpPercap, 
+      y = lifeExp, 
+      color = continent, 
+      size = pop/1000000) + 
+  labs(x = "GDP per Capita", 
+       y = "Life Expectancy", 
+       title = "Do People in Wealthy Countries Live Longer?", 
+       size = "Population (in millions)", 
+       color = "Continent") +
+  geom_point() + 
+  scale_color_brewer(palette = "RdYlBu") + 
+  theme_minimal()
+```
+
