@@ -1,4 +1,10 @@
+## Setup section
+
 library(tidyverse)
+library(ggplot2)
+
+
+## Day 1: plotting
 
 gapminder_1997 <- read_csv("data/gapminder_1997.csv")
 gapminder_1997
@@ -48,3 +54,26 @@ ggplot(data = gapminder_data) +
 # geom_jitter = random spacing on the x-axis to better identify trends
   geom_jitter(width = 0.1, alpha = 0.2)
 ggsave("figures/continent_lifeExp.png")
+
+
+## Day 2: Data manipulation and cleaning
+
+gapminder_data <- read_csv("data/gapminder_data.csv")
+gapminder_data
+
+summarize(gapminder_data, avgLifeExp = mean(lifeExp))
+
+summarize(gapminder_data, minLifeExp = min(lifeExp), maxLifeExp = max(lifeExp))
+
+gapminder_data_lifeExp <- gapminder_data %>%
+  summarize(avgLifeExp = mean(lifeExp), minLifeExp = min(lifeExp), maxLifeExp = max(lifeExp))
+
+gapminder_data %>%
+  filter(year == 2007) %>%
+  summarise(avgLifeExp = mean(lifeExp))
+
+gapminder_data %>%
+  filter(year == 1962) %>%
+  summarise(avgLifeExp = mean(lifeExp))
+
+summarise(gapminder_data, earliestyr = min(year))
