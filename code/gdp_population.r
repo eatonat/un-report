@@ -47,3 +47,4 @@ ggplot(data = gapminder_data) +
   geom_violin() +
 # geom_jitter = random spacing on the x-axis to better identify trends
   geom_jitter(width = 0.1, alpha = 0.2)
+ggsave("figures/continent_lifeExp.png")
